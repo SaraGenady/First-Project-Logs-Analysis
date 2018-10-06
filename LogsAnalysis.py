@@ -33,6 +33,22 @@ print("Who are the most popular article authors of all time?")
 for title, views_num in top_authors:
      print(" \"{}\" -- {} views".format(title, views_num))
 
+# On which days did more than 1% of requests lead to errors?
+error_requests =c.execute("""select substr(logs1.time,0,11) as DateError ,
+                             (count(*) * 100 / (select count(1) 
+                             from logs 
+                             where substr(logs.time,0,11) = substr(logs1.time,0,11))) PresError
+                             from logs logs1
+                             where logs1.status='404 NOT FOUND'
+                             group by DateError
+                             having PresError > 1""")
+# Print question
+print("On which days did more than 1% of requests lead to errors?")
+# Loop on error_requests and print
+for DateError, PresError in error_requests:
+     print(" \"{}\" -- {} % errors".format(DateError, PresError))
+
+
 # conn commit #
 conn.commit()
 
