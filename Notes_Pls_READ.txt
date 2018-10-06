@@ -1,0 +1,10 @@
+
+ Hello ..,
+
+       I can't use Vagrant i faced some problems with my PowerShell version and Virtual Machine,
+ so for delivery the project at the time,I worked with SQLite with Python on Visual Studio code.
+
+ I will appreciate if you accept my excuses and my project.
+
+ Best Regards,
+ Sara Genady
